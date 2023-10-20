@@ -44,26 +44,10 @@
 
     .navbar-logo {
       font-weight: bold;
-      font-size: 24px;
+      font-size: 26px;
       
     }
     
-.card-item-hidden {
-  opacity: 0;
-  transform: translateY(50px);
-  visibility: hidden;
-  transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease;
-}
-.card-item-visible {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-  transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease;
-  /* ... */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ubah nilai blur dan spread sesuai keinginan */
-}
-
-
 
     /* Styling untuk header */
     .header {
@@ -77,6 +61,8 @@
     .header img {
       width: 100%;
       object-fit: cover;
+      top: 0px;
+      left: 0px;
     }
     
      .header {
@@ -91,7 +77,7 @@
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
-    font-size: auto;
+    font-size: 12px;
   }
 
    .article {
@@ -114,15 +100,23 @@
       justify-content: center;
     }
 
-    .card-item {
-      width: 300px;
-      background-color: #ffffff;
-      margin: 10px;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
+   .card-item {
+  width: 300px;
+  background-color: #ffffff;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.card-item-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}    
 
     .card-item:hover {
       transform: scale(1.05);
@@ -142,7 +136,8 @@
       color: #fff;
     }
 
-    body.dark .card-item {
+    body.dark .card-item,
+    body.dark .topik {
       background-color: #222;
     }
 
@@ -153,7 +148,7 @@
 
     /* Styling untuk footer */
     footer {
-      background-color: #333;
+      background-color: #0f1b2d;
       color: #fff;
       padding: 20px;
       text-align: center;
@@ -161,7 +156,8 @@
     }
 
     /* Styling untuk tombol tema */
-    .theme-toggle-container {
+    .theme-toggle-container { 
+    cursor: pointer;
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -190,16 +186,36 @@
       transform: rotate(180deg);
     }
 
-    /* Styling responsif */
-    @media screen and (max-width: 767px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    
+.topik {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  background-color: #ffffff;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-      .navbar-logo {
-        margin-bottom: 10px;
-      }
+  }
+
+.image-container {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.image-container img {
+  width: 50px; /* Sesuaikan lebar gambar mini sesuai kebutuhan Anda */
+  height: 50px; /* Sesuaikan tinggi gambar mini sesuai kebutuhan Anda */
+  object-fit: cover;
+  border-radius: 10px; /* Tambahkan border radius sesuai keinginan Anda */
+}
+
+//laptop
+
+
+/* Existing styles */
+
 
 
   </style>
@@ -225,11 +241,25 @@
 </div>
 
   <img src="Img/header.jpg" alt="Header Image">
-<h2> <center>Artikel</center></h2>
 
-  <hr color="#ebebeb">
+
+ 
 </header>
- <br>
+<h2><center><p>Selamat datang</p></center></h2>
+<center>
+  <div class="topik">
+  <div class="image-container">
+    <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
+    
+  </div>
+  
+  <div class="content">
+    <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
+  </div>
+  </center>
+</div>
+
+</div>
  <br>
   &nbsp
   <div class="article">
@@ -247,25 +277,25 @@ Teladan Kepemimpinan dan Kasih Sayang )</p>
       </div>
       <div class="card-item">
           <a href="#">
-        <img src="artikel3.jpg"/></a>
+        <img src="Img/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
       </div>
         <div class="card-item">
         <a href="#">
-        <img src="artikel3.jpg"/></a>
+        <img src="Img/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
       <div class="card-item">
         <a href="#">
-        <img src="artikel3.jpg"/></a>
+       <img src="Img/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
         <div class="card-item">
         <a href="#">
-        <img src="artikel3.jpg"/></a>
+        <img src="Img/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
         </div>
@@ -334,26 +364,15 @@ function isElementInViewport(element) {
 
 
 function handleScrollAnimations() {
-  /* ... */
-  setTimeout(handleScrollAnimations, 16); // Perbarui setiap frame (sekitar 60 FPS)
-}
-
-// Mengatur animasi muncul saat di-scroll
-function handleScrollAnimations() {
   const cardItems = document.querySelectorAll('.card-item');
 
   cardItems.forEach((cardItem) => {
     if (isElementInViewport(cardItem)) {
       cardItem.classList.add('card-item-visible');
-      cardItem.classList.remove('card-item-hidden');
-      cardItem.style.visibility = 'visible';
-    } else {
-      cardItem.classList.remove('card-item-visible');
-      cardItem.classList.add('card-item-hidden');
-      cardItem.style.visibility = 'hidden';
     }
   });
 }
+
 
 
 // Menjalankan fungsi handleScrollAnimations saat di-scroll
@@ -361,6 +380,19 @@ window.addEventListener('scroll', handleScrollAnimations);
 window.addEventListener('resize', handleScrollAnimations);
 document.addEventListener('DOMContentLoaded', handleScrollAnimations);
 
+//perbatasan
+
+
+  // Deteksi jenis perangkat saat halaman dimuat
+  function detectDevice() {
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    return isMobile;
+  }
+
+  // Redirect pengguna jika bukan perangkat mobile
+  if (!detectDevice()) {
+    window.location.href = "Error/halaman_error.html"; // Ganti 'halaman_error.html' dengan URL halaman error atau pesan yang ingin ditampilkan untuk pengguna komputer
+  }
 
 
   </script>
@@ -406,15 +438,13 @@ document.addEventListener('DOMContentLoaded', handleScrollAnimations);
 <br>
  
   <div class="map-widget">
-<iframe width="80%" height="200" src="https://www.openstreetmap.org/export/embed.html?bbox=109.46299971449272%2C-7.5924516691636%2C109.49673117506401%2C-7.533828797575038&amp;layer=opnvkarte&amp;marker=-7.563141228852388%2C109.4798654447784" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=-7.5631&amp;mlon=109.4799#map=14/-7.5631/109.4799&amp;layers=O"style="text-decoration: none; font-size: 20px;">Lihat peta lebih besar</a></small>
+<iframe width="300" height="200" src="https://www.openstreetmap.org/export/embed.html?bbox=109.46299971449272%2C-7.5924516691636%2C109.49673117506401%2C-7.533828797575038&amp;layer=opnvkarte&amp;marker=-7.563141228852388%2C109.4798654447784" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=-7.5631&amp;mlon=109.4799#map=14/-7.5631/109.4799&amp;layers=O"style="text-decoration: none; font-size: 15px;">Lihat peta lebih besar</a></small>
 </div>
 
 
   <div class="company-info">
     <p>Ihsan Fuadi</p>
-    <p>123 Company Lane, Cityville, Country</p>
-    <p>Founded in 2000</p>
-    <p>Our Mission: Providing Quality Services</p>
+    <p>2006</p>
   </div>
 
   &copy; 2023 Website Sanz. All rights reserved.
