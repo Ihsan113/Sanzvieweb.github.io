@@ -1,0 +1,227 @@
+@media screen and (min-width: 766px) {
+   
+     /* Styling untuk tema terang */
+     body {
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s ease;
+      }
+  
+      /* Styling untuk tema gelap */
+      body.dark {
+        background-color: #333;
+        color: #fff;
+      }
+  
+      /* Styling untuk navigasi */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: transparent;
+        color: #fff;
+        z-index: 999;
+        transition: background-color 0.3s ease;
+      }
+  
+      .navbar.transparent {
+        background-color: rgba(0, 0, 0, 0.7); /* Transparansi saat di scroll ke bawah */
+      }
+  
+      .navbar-logo {
+        font-weight: bold;
+        font-size: 26px;
+        
+      }
+      
+  
+      /* Styling untuk header */
+      .header {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+      }
+  
+      .header img {
+        width: 100%;
+        object-fit: cover;
+        top: 0px;
+        left: 0px;
+      }
+      
+       .header {
+      position: relative;
+      z-index: 1;
+    }
+  
+    .header-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+    }
+  
+     .article {
+    padding: 20px;
+    margin-top: -30px;
+    padding-top: 30px;
+    background-color: #020202; /* Warna latar belakang cadangan jika gambar tidak dimuat */
+    background-image: url('Img/Latar.jpg'); /* Ganti URL_GAMBAR dengan URL gambar yang ingin Anda gunakan */
+    background-size: cover; /* Mengatur ukuran gambar agar menutupi elemen .article sepenuhnya */
+    background-position: center; /* Mengatur posisi gambar agar tetap berada di tengah elemen .article */
+    position: relative;
+    z-index: 2;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+      .card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+  
+     .card-item {
+    width: 300px;
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .card-item-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }    
+  
+      .card-item:hover {
+        transform: scale(1.05);
+      }
+  
+      .card-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+  
+      /* Styling untuk tema gelap */
+      body.dark .article {
+        background-color: #333;
+        color: #fff;
+      }
+  
+      body.dark .card-item,
+      body.dark .topik {
+        background-color: #222;
+      }
+  
+      body.dark .card-item h3,
+      body.dark .card-item p {
+        color: #fff;
+      }
+  
+      /* Styling untuk footer */
+      footer {
+        background-color: #0f1b2d;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        margin-top: 50px;
+      }
+  
+      /* Styling untuk tombol tema */
+      .theme-toggle-container { 
+      cursor: pointer;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+        z-index: 999;
+      }
+  
+      .theme-toggle-container:hover {
+        background-color: #fff;
+      }
+  
+      .theme-toggle-icon {
+        font-size: 24px;
+        transition: transform 0.3s ease;
+      }
+  
+      .theme-toggle-container:hover .theme-toggle-icon {
+        transform: rotate(180deg);
+      }
+  
+      
+      .topik-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .topik {
+        display: flex;
+        align-items: center;
+        width: 25%;
+        background-color: #ffffff;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      
+        }
+      
+      .image-container {
+        flex-shrink: 0;
+        margin-right: 20px;
+      }
+      
+      .image-container img {
+        width: 50px; /* Sesuaikan lebar gambar mini sesuai kebutuhan Anda */
+        height: 50px; /* Sesuaikan tinggi gambar mini sesuai kebutuhan Anda */
+        object-fit: cover;
+        border-radius: 10px; /* Tambahkan border radius sesuai keinginan Anda */
+      }
+      
+    
+  
+  .map-widget{
+    width: 300px;
+    position: center;
+    
+    
+  }
+  
+  /* Existing styles */
+  
+  h2 {
+    text-align: center;
+  }
+  
+}

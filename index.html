@@ -3,10 +3,13 @@
 <head>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...your-sha512-hash-here..." crossorigin="anonymous" />
-    
+    <link rel="stylesheet" href="css/laptop.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
   <title>Website Sanz</title>
   <style>
+
+@media screen and (max-width: 766px) {
     /* Styling untuk tema terang */
     body {
       background-color: #f9f9f9;
@@ -190,7 +193,7 @@
 .topik {
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 70%;
   background-color: #ffffff;
   margin: 10px;
   padding: 20px;
@@ -211,15 +214,21 @@
   border-radius: 10px; /* Tambahkan border radius sesuai keinginan Anda */
 }
 
-//laptop
-
+.map-widget{
+    width: 30%;
+    
+    
+  }
 
 /* Existing styles */
 
-
+h2 {
+  text-align: center;
+}
+}
 
   </style>
-</head>
+
 <body>
     
 
@@ -245,22 +254,49 @@
 
  
 </header>
-<h2><center><p>Selamat datang</p></center></h2>
-<center>
+
+<h2><p>Selamat datang</p></h2>
+
+<div class="topik-container">
   <div class="topik">
-  <div class="image-container">
-    <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
-    
+      <div class="image-container">
+          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
+      </div>
+      <div class="content">
+          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
+      </div>
   </div>
-  
-  <div class="content">
-    <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
+
+  <div class="topik">
+      <div class="image-container">
+          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
+      </div>
+      <div class="content">
+          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
+      </div>
   </div>
-  </center>
 </div>
 
+<div class="topik-container">
+  <div class="topik">
+      <div class="image-container">
+          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
+      </div>
+      <div class="content">
+          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
+      </div>
+  </div>
+
+  <div class="topik">
+      <div class="image-container">
+          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
+      </div>
+      <div class="content">
+          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
+      </div>
+  </div>
 </div>
- <br>
+<br>
   &nbsp
   <div class="article">
     <div class="card">
@@ -423,10 +459,11 @@ document.addEventListener('DOMContentLoaded', handleScrollAnimations);
   </div>
 <br>
  
+<center>
   <div class="map-widget">
-<iframe width="300" height="200" src="https://www.openstreetmap.org/export/embed.html?bbox=109.46299971449272%2C-7.5924516691636%2C109.49673117506401%2C-7.533828797575038&amp;layer=opnvkarte&amp;marker=-7.563141228852388%2C109.4798654447784" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=-7.5631&amp;mlon=109.4799#map=14/-7.5631/109.4799&amp;layers=O"style="text-decoration: none; font-size: 15px;">Lihat peta lebih besar</a></small>
+<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=109.46299971449272%2C-7.5924516691636%2C109.49673117506401%2C-7.533828797575038&amp;layer=opnvkarte&amp;marker=-7.563141228852388%2C109.4798654447784" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=-7.5631&amp;mlon=109.4799#map=14/-7.5631/109.4799&amp;layers=O"style="text-decoration: none; font-size: 15px;">Lihat peta lebih besar</a></small>
 </div>
-
+</center>
 
   <div class="company-info">
     <p>Ihsan Fuadi</p>
