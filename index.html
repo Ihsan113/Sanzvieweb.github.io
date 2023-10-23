@@ -2,14 +2,15 @@
 <html>
 <head>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...your-sha512-hash-here..." crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/laptop.css"/>
+ 
+
+    <link rel="stylesheet" href="CSS/laptop.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <title>Website Sanz</title>
   <style>
 
-@media screen and (max-width: 766px) {
+@media screen and (max-width: 720px) {
     /* Styling untuk tema terang */
     body {
       background-color: #f9f9f9;
@@ -190,42 +191,33 @@
     }
 
     
-.topik {
-  display: flex;
-  align-items: center;
-  width: 70%;
-  background-color: #ffffff;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  }
-
-.image-container {
-  flex-shrink: 0;
-  margin-right: 20px;
+/* CSS untuk tombol navigasi */
+.navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.image-container img {
-  width: 50px; /* Sesuaikan lebar gambar mini sesuai kebutuhan Anda */
-  height: 50px; /* Sesuaikan tinggi gambar mini sesuai kebutuhan Anda */
-  object-fit: cover;
-  border-radius: 10px; /* Tambahkan border radius sesuai keinginan Anda */
+.navigation-buttons a {
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #225566; /* Warna latar belakang tombol */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.map-widget{
-    width: 30%;
-    
-    
-  }
+.navigation-buttons a:hover {
+    background-color: #225566; /* Warna latar belakang tombol saat dihover */
+}
+
+/* CSS untuk footer (bagian bawah halaman) */
 
 /* Existing styles */
-
 h2 {
   text-align: center;
 }
-}
+
 
   </style>
 
@@ -250,55 +242,23 @@ h2 {
 </div>
 
   <img src="Img/header.jpg" alt="Header Image">
-
-
  
+
+<h2>Selamat datang</h2>
+
 </header>
 
-<h2><p>Selamat datang</p></h2>
 
-<div class="topik-container">
-  <div class="topik">
-      <div class="image-container">
-          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
-      </div>
-      <div class="content">
-          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
-      </div>
-  </div>
-
-  <div class="topik">
-      <div class="image-container">
-          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
-      </div>
-      <div class="content">
-          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
-      </div>
-  </div>
-</div>
-
-<div class="topik-container">
-  <div class="topik">
-      <div class="image-container">
-          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
-      </div>
-      <div class="content">
-          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
-      </div>
-  </div>
-
-  <div class="topik">
-      <div class="image-container">
-          <img src="Img/gambar-mini.jpg" alt="Mini Gambar">
-      </div>
-      <div class="content">
-          <p>Website ini berisi artikel tentang pengalaman saya pribadi.</p>
-      </div>
-  </div>
-</div>
 <br>
+ <div class="navigation-buttons"> <a href="/home">Home</a> <a href="/profile">Profil</a> <a href="/documents">Dokumen</a> </div> 
+ <br>
+
   &nbsp
+  <br>
+  <br>
+  
   <div class="article">
+      
     <div class="card">
       <div class="card-item">
         <a href="https://sites.google.com/view/sanzcom/halaman-2"><img src="https://i.ibb.co/JrFJXwp/df8177f82cf11fe53099d4a510192f7e-1.png"/></a>
@@ -313,25 +273,25 @@ Teladan Kepemimpinan dan Kasih Sayang )</p>
       </div>
       <div class="card-item">
           <a href="#">
-        <img src="Img/kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
       </div>
         <div class="card-item">
         <a href="#">
-        <img src="Img/kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
       <div class="card-item">
         <a href="#">
-       <img src="Img/kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
         <div class="card-item">
         <a href="#">
-        <img src="Img/kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
         </div>
@@ -339,7 +299,12 @@ Teladan Kepemimpinan dan Kasih Sayang )</p>
   </div>
 
 
-   <script>
+
+<script>
+
+
+
+    //perbatasan 
     // Script untuk mengatur tema gelap dan terang
     function toggleTheme() {
       const body = document.querySelector('body');
@@ -461,9 +426,12 @@ document.addEventListener('DOMContentLoaded', handleScrollAnimations);
  
 <center>
   <div class="map-widget">
-<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=109.46299971449272%2C-7.5924516691636%2C109.49673117506401%2C-7.533828797575038&amp;layer=opnvkarte&amp;marker=-7.563141228852388%2C109.4798654447784" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=-7.5631&amp;mlon=109.4799#map=14/-7.5631/109.4799&amp;layers=O"style="text-decoration: none; font-size: 15px;">Lihat peta lebih besar</a></small>
-</div>
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=109.46299971449272%2C-7.5924516691636%2C109.49673117506401%2C-7.533828797575038&amp;layer=opnvkarte&amp;marker=-7.563141228852388%2C109.4798654447784" style="border: 1px solid black"></iframe>
+      <br/>
+      <small><a href="https://www.openstreetmap.org/?mlat=-7.5631&amp;mlon=109.4799#map=14/-7.5631/109.4799&amp;layers=O" style="text-decoration: none; font-size: 15px;">Lihat peta lebih besar</a></small>
+  </div>
 </center>
+
 
   <div class="company-info">
     <p>Ihsan Fuadi</p>
