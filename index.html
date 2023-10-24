@@ -4,7 +4,7 @@
     
  
 
-    <link rel="stylesheet" href="css/laptop.css"/>
+    <link rel="stylesheet" href="CSS/laptop.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <title>Website Sanz</title>
@@ -218,6 +218,90 @@ h2 {
   text-align: center;
 }
 
+/* CSS untuk elemen pencarian */
+#searchInput {
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #2e2e2e;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  width: 50%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* CSS untuk tombol pencarian */
+#searchBtn {
+  padding: 15px 30px;
+  font-size: 14px;
+  background-color: #1d1d1d;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  outline: none;
+}
+
+#searchBtn:hover {
+  background-color: #ff1f00;
+  
+}
+
+#searchBtn:active {
+  transform: scale(0.95);
+}
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #494949;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.popup {
+  display: none;
+  /* atau menggunakan visibility: hidden; */
+}
+
+.popup.show {
+  display: block;
+  /* atau menggunakan visibility: visible; */
+}
+
+#searchNotFoundPopup img {
+  width: 80px; /* Ubah ukuran gambar sesuai kebutuhan */
+  height: auto; /* Biarkan tinggi otomatis menyesuaikan proporsi gambar */
+}
+/* CSS untuk elemen tombol × */
+#refreshBtn {
+  padding: 10px;
+  font-size: 15px;
+  background-color: #1d1d1d;
+  color: white;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  outline: none;
+  margin-left: 10px; /* Memberi jarak antara tombol Cari dan tombol × */
+}
+
+#refreshBtn:hover {
+  background-color: #ff1f00;
+}
+
+#refreshBtn:active {
+  transform: scale(0.95);
+}
+
+}
 
   </style>
 
@@ -226,8 +310,28 @@ h2 {
 
     
  <nav class="navbar">
+  <div class="navbar-logo">Website Sanz
+  &nbsp
+  &nbsp
   
-  <div class="navbar-logo">Website Sanz</div>
+<div class="search-container">
+  <form onsubmit="searchProducts(); return false;">
+    <input type="text" id="searchInput" name="query" placeholder="Cari Halaman...">
+    <button id="searchBtn" type="submit">Cari</button>
+    <button id="refreshBtn" type="button" onclick="refreshPage()">🔁</button>
+  </form>
+</div>
+
+    
+     
+  <div id="searchNotFoundPopup" class="popup">
+  <span class="close">&times;</span>
+  <img src="Img/peringatan.png" alt="Image Description">
+  <p>Halaman tidak ditemukan</p>
+</div>
+
+  </div>
+  
   
   <div class="theme-toggle-container" onclick="toggleTheme()">
     <span class="theme-toggle-icon" role="img" aria-label="Toggle Theme">⚙️</span>
@@ -273,25 +377,25 @@ Teladan Kepemimpinan dan Kasih Sayang )</p>
       </div>
       <div class="card-item">
           <a href="#">
-        <img src="Img/Kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
       </div>
         <div class="card-item">
         <a href="#">
-       <img src="Img/Kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
       <div class="card-item">
         <a href="#">
-        <img src="Img/Kosong.jpg"/></a>
-        <h3>Judul Artikel 3</h3>
+       <img src="IMG/kosong.jpg"/></a>
+        <h3>males 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
         <div class="card-item">
         <a href="#">
-        <img src="Img/Kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
         </div>
@@ -382,6 +486,58 @@ window.addEventListener('resize', handleScrollAnimations);
 document.addEventListener('DOMContentLoaded', handleScrollAnimations);
 
 //perbatasan
+
+ //pencarian
+      function searchProducts() {
+  var input, filter, cards, card, title, i, txtValue;
+  input = document.getElementById('searchInput');
+  filter = input.value.toUpperCase();
+  cards = document.getElementsByClassName('card-item');
+  var searchNotFound = true; // Menandakan apakah hasil pencarian ditemukan atau tidak
+
+  for (i = 0; i < cards.length; i++) {
+    card = cards[i];
+    title = card.getElementsByTagName('h3')[0];
+    txtValue = title.textContent || title.innerText;
+    if (txtValue.toUpperCase().startsWith(filter)) {
+      card.style.display = '';
+      // Mengarahkan pengguna ke halaman game saat produk ditemukan
+      card.onclick = function() {
+        var link = this.getElementsByTagName('a')[0].href;
+        window.location.href = link;
+      };
+      searchNotFound = false; // Setel menjadi false jika hasil pencarian ditemukan
+    } else {
+      card.style.display = 'none';
+    }
+  }
+
+  // Tampilkan peringatan jika hasil pencarian tidak ditemukan
+  var searchNotFoundPopup = document.getElementById('searchNotFoundPopup');
+  if (searchNotFound) {
+    searchNotFoundPopup.classList.add('show');
+  } else {
+    searchNotFoundPopup.classList.remove('show');
+  }
+}
+
+const closeBtn = document.querySelector('.close');
+
+closeBtn.addEventListener('click', function() {
+  // Menghapus nilai input pencarian
+  document.getElementById('searchInput').value = '';
+  
+  // Memanggil fungsi pencarian untuk mengembalikan tampilan produk semula
+  searchProducts();
+  
+  // Menyembunyikan popup pencarian tidak ditemukan
+  var searchNotFoundPopup = document.getElementById('searchNotFoundPopup');
+  searchNotFoundPopup.classList.remove('show');
+});
+
+function refreshPage() { location.reload(); }
+
+
   </script>
   
   
