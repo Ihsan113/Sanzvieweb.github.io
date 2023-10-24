@@ -35,12 +35,7 @@
         background-color: rgba(0, 0, 0, 0.7); /* Transparansi saat di scroll ke bawah */
       }
   
-      .navbar-logo {
-        font-weight: bold;
-        font-size: 26px;
-        
-      }
-      
+    
   
       /* Styling untuk header */
     .header {
@@ -249,11 +244,106 @@
     background-color: #225566; /* Warna latar belakang tombol saat dihover */
 }
 
-/* CSS untuk footer (bagian bawah halaman) */
-
-  /* Existing styles */
-  
- 
-  
+/* CSS untuk elemen pencarian */
+/* CSS untuk elemen navbar */
+/* CSS untuk elemen navbar */
+/* CSS untuk elemen navbar */
+.navbar-logo {
+  font-weight: bold;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  color: white;
 }
 
+/* CSS untuk elemen pencarian */
+#searchInput {
+  margin: 0 10px; /* Memberi jarak antara logo dan kotak pencarian */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #2e2e2e;
+  border-radius: 25px;
+  width: 300px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+#searchBtn {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #1d1d1d;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  outline: none;
+}
+
+/* Centering the search input and button */
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Optional: Add margin to the search container if needed */
+.search-container {
+  margin-left: auto; /* This will push the search container to the right side */
+}
+
+#searchBtn:hover {
+  background-color: #ff1f00;
+}
+
+#searchBtn:active {
+  transform: scale(0.95);
+}
+#refreshBtn {
+  padding: 10px;
+  font-size: 15px;
+  background-color: #1d1d1d;
+  color: white;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  outline: none;
+  margin-left: 10px; /* Memberi jarak antara tombol Cari dan tombol × */
+}
+
+#refreshBtn:hover {
+  background-color: #ff1f00;
+}
+
+#refreshBtn:active {
+  transform: scale(0.95);
+}
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #494949;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.popup {
+  display: none;
+  /* atau menggunakan visibility: hidden; */
+}
+
+.popup.show {
+  display: block;
+  /* atau menggunakan visibility: visible; */
+}
+
+#searchNotFoundPopup img {
+  width: 80px; /* Ubah ukuran gambar sesuai kebutuhan */
+  height: auto; /* Biarkan tinggi otomatis menyesuaikan proporsi gambar */
+}
+}
