@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="in">
+
+<head>
+    <!-- Tambahkan tag <style> disini untuk menentukan gaya halaman komentar -->
+    <style>
+      .comment-container, .h2 {
+    position: fixed;
+    top: 50px;
+    color: white;
+    right: 50px;
+    width: 300px;
+    height: 350px;
+    background-color: #2f2f2f;
+    box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+
+        .comment-input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #35575b;
+            border-radius: 5px;
+        }
+
+        .comment-button {
+            padding: 10px 20px;
+            background-color: #128c7e;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-button:hover {
+            background-color: #075e54;
+        }
+        
+        .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+}
+.close-button:hover {
+    color: #ff0000;
+}
+
+    </style>
+</head>
+
+<body>
+    
+   
+   <div class="comment-container">
+    <button id="close-button" class="close-button">&times;</button>
+    <h2>Web Sanz</h2>
+    <input type="text" id="name-input" class="comment-input" placeholder="Nama">
+    <input type="email" id="email-input" class="comment-input" placeholder="Email">
+    <textarea id="comment-input" class="comment-input" placeholder="Ketik komentar..."></textarea>
+    <button id="send-comment-button" class="comment-button">Kirim</button>
+</div>
+
+
+    <!-- Tambahkan script email.js dan script event listener disini -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        document.getElementById('send-comment-button').addEventListener('click', function () {
+            var name = document.getElementById('name-input').value;
+            var email = document.getElementById('email-input').value;
+            var comment = document.getElementById('comment-input').value;
+
+
+document.getElementById('close-button').addEventListener('click', function() {
+    var commentContainer = document.querySelector('.comment-container');
+    commentContainer.style.display = 'none';
+});
+
+
+
+            // Kirim komentar menggunakan email.js
+            emailjs.send("your_service_id", "your_template_id", {
+                name: name,
+                email: email,
+                comment: comment
+            }).then(
+                function (response) {
+                    console.log("Komentar berhasil dikirim:", response);
+                    alert("Komentar Anda telah berhasil dikirim!");
+                },
+                function (error) {
+                    console.log("Error:", error);
+                    alert("Maaf, terjadi kesalahan saat mengirim komentar.");
+                }
+            );
+        });
+    </script>
+</body>
+
+</html>

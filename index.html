@@ -3,8 +3,9 @@
 <head>
     
  
-
+<link rel="preload" href="script/Chat.js" as="script">
     <link rel="stylesheet" href="css/laptop.css"/>
+    <link rel="stylesheet" href="css/Chat.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <title>Website Sanz</title>
@@ -336,6 +337,20 @@ h2 {
   <div class="theme-toggle-container" onclick="toggleTheme()">
     <span class="theme-toggle-icon" role="img" aria-label="Toggle Theme">⚙️</span>
   </div>
+  
+ <button id="floating-comment-button" class="floating-comment-button">💬</button>
+
+    <div class="comment-container">
+        <button id="close-button" class="close-button">&times;</button>
+        <h2>Web Sanz</h2>
+        <input type="text" id="name-input" class="comment-input" placeholder="Nama">
+        <input type="email" id="email-input" class="comment-input" placeholder="Email">
+        <textarea id="comment-input" class="comment-input" placeholder="Ketik komentar..."></textarea>
+        <button id="send-comment-button" class="comment-button">Kirim</button>
+        <h3>Tulis komentar anda disini</h3>
+    </div>
+
+
 </nav>
 
 
@@ -351,6 +366,14 @@ h2 {
 <h2>Selamat datang</h2>
 
 </header>
+
+
+
+
+
+
+
+
 
 
 <br>
@@ -377,36 +400,37 @@ Teladan Kepemimpinan dan Kasih Sayang )</p>
       </div>
       <div class="card-item">
           <a href="#">
-        <img src="Img/Kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
       </div>
         <div class="card-item">
         <a href="#">
-        <img src="Img/Kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
       <div class="card-item">
         <a href="#">
-       <img src="Img/Kosong.jpg"/></a>
+       <img src="IMG/kosong.jpg"/></a>
         <h3>males 3</h3>
         <p>Deskripsi artikel 3</p>
     </div>
         <div class="card-item">
         <a href="#">
-        <img src="Img/Kosong.jpg"/></a>
+        <img src="IMG/kosong.jpg"/></a>
         <h3>Judul Artikel 3</h3>
         <p>Deskripsi artikel 3</p>
         </div>
   </div>
   </div>
-
-
+ <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="Script/Chat.js"></script>
 
 <script>
 
 
+//perbatasan
 
     //perbatasan 
     // Script untuk mengatur tema gelap dan terang
@@ -536,6 +560,10 @@ closeBtn.addEventListener('click', function() {
 });
 
 function refreshPage() { location.reload(); }
+
+
+//perbatasan
+
 
 
   </script>
