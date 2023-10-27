@@ -346,4 +346,52 @@
   width: 80px; /* Ubah ukuran gambar sesuai kebutuhan */
   height: auto; /* Biarkan tinggi otomatis menyesuaikan proporsi gambar */
 }
+/* untuk animasi teks dan button*/
+.Selamat {
+      animation: Selamat 2s forwards;
+    }
+       @keyframes Selamat {
+      0% {
+        transform: translateX(100%);
+      }
 }
+
+@keyframes Button{
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+.navigation-buttons{
+      animation: Button 2s forwards;
+    }
+    .Selamat {
+      animation: Selamat 2s forwards;
+    }
+       @keyframes Selamat {
+      0% {
+        transform: translateX(100%);
+      }
+}
+
+@keyframes Button{
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+.navigation-buttons{
+      animation: Button 2s forwards;
+    }
+    
+    }

@@ -302,8 +302,33 @@ h2 {
   transform: scale(0.95);
 }
 
+
+/* animasi teks */
+.Selamat {
+      animation: Selamat 2s forwards;
+    }
+       @keyframes Selamat {
+      0% {
+        transform: translateX(100%);
+      }
 }
 
+@keyframes Button{
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+.navigation-buttons{
+      animation: Button 2s forwards;
+    }
+    /* penutup paling atas*/
+    }
   </style>
 
 <body>
@@ -363,7 +388,11 @@ h2 {
   <img src="Img/header.jpg" alt="Header Image">
  
 
+<div class="Selamat">
 <h2>Selamat datang</h2>
+</div>
+
+
 
 </header>
 
