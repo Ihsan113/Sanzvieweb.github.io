@@ -193,9 +193,16 @@
 
     
 /* CSS untuk tombol navigasi */
+
 .navigation-buttons {
     text-align: center;
-    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* Efek swipe di perangkat iOS */
+    
 }
 
 .navigation-buttons a {
@@ -206,7 +213,11 @@
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    margin-right: 20px;
 }
+
+/* Styling tambahan sesuai kebutuhan */
+
 
 .navigation-buttons a:hover {
     background-color: #225566; /* Warna latar belakang tombol saat dihover */
@@ -406,7 +417,15 @@ h2 {
 
 
 <br>
- <div class="navigation-buttons"> <a href="/home">About</a> <a href="Halaman/Profil.html">Profil</a> <a href="/documents">Portofolio</a> </div> 
+ <div class="navigation-container">
+    <div class="navigation-buttons">
+        <a href="/home">About »</a>        
+        <a href="Halaman/Profil.html">Profil</a>
+        <a href="/documents">Portofolio</a>
+        <a href="Halaman/music.html">Projek</a>
+    </div>
+</div>
+
  <br>
 
   &nbsp

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="in">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Dolby Atmos</title>
+  <style>
+       #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    body {
+  background-color: #000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background-color: rgba(30, 50, 70, 0.2); /* Warna biru tua dengan transparansi 20% */
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  border: 0.1px solid #003255;
+}
+
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: circleEffect 6s ease-in-out infinite, colorChange 12s linear infinite;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+    
+}
+
+@keyframes circleEffect {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+@keyframes colorChange {
+  0%, 100% {
+    background-image: radial-gradient(circle, rgba(255, 76, 76, 0.6), rgba(255, 0, 128, 0.6));
+  }
+  33% {
+    background-image: radial-gradient(circle, rgba(255, 76, 76, 0.6), rgba(255, 0, 128, 0.6));
+  }
+  66% {
+    background-image: radial-gradient(circle, rgba(0, 198, 255, 0.6), rgba(0, 114, 255, 0.6));
+  }
+  100% {
+    background-image: radial-gradient(circle, rgba(255, 239, 107, 0.6), rgba(255, 198, 0, 0.6));
+  }
+}
+
+.card h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* Tambahkan gaya dan efek lain sesuai kebutuhan Anda */
+
+
+
+.audio-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.button-container button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #408cff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.button-container button:hover {
+  transform: scale(1.1);
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.slider-label {
+  margin-right: 10px;
+}
+
+.slider-controls input[type="range"] {
+  width: 100%;
+  max-width: 200px;
+  -webkit-appearance: none;
+  background-color: #555;
+  height: 4px;
+  outline: none;
+  border-radius: 2px;
+}
+
+.slider-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.time-container {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.enhance-sound-button.enhanced {
+  background-color: #00cc00;
+}
+
+.enable-8d-button,
+.disable-8d-button {
+  background-color: #408cff;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.enable-8d-button:hover,
+.disable-8d-button:hover {
+  background-color: #ff9933;
+}
+
+
+  .card {
+    padding: 10px;
+  }
+
+  .slider-controls input[type="range"] {
+    max-width: 150px;
+  }
+  .bass-extract-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.bass-extract-button:hover {
+  background-color: #ff8a65;
+  transform: scale(1.1);
+}
+
+.bass-extract-button:active {
+  background-color: #e64a19;
+}
+
+.hidden-ui {
+  display: none;
+}
+
+#back-link {
+    text-decoration: none;
+    color: #ffffff;
+    position: left. 3px;        
+}
+
+  .time-container {
+    font-size: 14px;
+  }
+}
+
+  </style>
+</head>
+<body>
+    
+    
+     
+      <div id="particles-js"></div>
+  <div class="card">
+            <br>
+    <h1>DJ Sound 8D</h1>
+    <br>
+    
+    <div class="audio-controls">
+      <div class="button-container">
+                   <button class="hide-ui-button">Sembunyikan UI</button>
+        <button class="play-button">Play</button>
+        <button class="pause-button">Pause</button>
+        <button class="music-button">Select Music</button>
+        <!-- Tambahkan tombol "Ganti Wallpaper" -->
+    <button class="change-wallpaper-button">Change Wallpaper</button>
+    <input type="file" id="wallpaperInput" accept="image/*" style="display: none;">
+      </div>
+      <br>
+      <div class="slider-container">
+        <span class="slider-label">Volume:</span>
+        <input type="range" id="volumeSlider" min="0" max="100" step="1" value="80">
+      </div>
+      <div class="slider-container">
+        <span class="slider-label">Bass:</span>
+        <input type="range" id="bassSlider" min="-12" max="12" step="1" value="0">
+      </div>
+      <div class="slider-container">
+        <span class="slider-label">8D Volume:</span>
+        <input type="range" id="eightDVolumeSlider" min="0" max="100" step="1" value="80" disabled>
+      </div>
+      
+     
+      <button class="bass-extract-button">Bass</button>
+      <br>
+      <div class="button-container">
+        <button class="change-song-button">Change Song</button>
+        <button class="enhance-sound-button">Enhance Sound</button>
+        <button class="enable-8d-button">Enable 8D</button>
+        <button class="disable-8d-button" disabled>Disable 8D</button>
+      </div>
+      <div class="time-container">
+        <span id="currentTime">00:00</span> / <span id="duration">00:00</span>
+        <br>
+        <br>
+         <a id="back-link" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> ⬅️Kembali</a>
+      </div>
+    </div>
+  </div>  
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Kode JavaScript sebelumnya
+
+    document.addEventListener('DOMContentLoaded', function() {
+  var bassExtractButton = document.querySelector('.bass-extract-button');
+  bassExtractButton.addEventListener('click', function() {
+    extractBass();
+  });
+audioPlayer.addEventListener('ended', function() {
+        audioPlayer.currentTime = 0; // Setel waktu pemutaran kembali ke awal
+        audioPlayer.play(); // Mulai memutar ulang lagu
+      });
+      });
+function extractBass() {
+      // Dapatkan nilai level bass dari slider
+      var bassLevel = parseFloat(bassSlider.value);
+
+      // Hitung faktor gain berdasarkan nilai bassLevel
+      var gainFactor = Math.pow(10, bassLevel / 20);
+
+      // Atur gainNode sesuai dengan faktor gain
+      gainNode.gain.value = gainFactor;
+    
+    
+  // Atur efek bass dengan BiquadFilterNode
+  var bassFilter = audioContext.createBiquadFilter();
+  bassFilter.type = 'lowpass';
+  bassFilter.frequency.value = 200 * Math.pow(2, bassLevel);
+  bassFilter.Q.value = 1;
+
+  // Sambungkan audio nodes dengan efek bass
+  sourceNode.connect(bassFilter);
+  bassFilter.connect(bassGainNode);
+  bassGainNode.connect(bassFilterNode);
+  bassFilterNode.connect(gainNode);        
+}
+    // Kode JavaScript sebelumnya
+
+    var enable8DButton = document.querySelector('.enable-8d-button');
+    var disable8DButton = document.querySelector('.disable-8d-button');
+    var is8DEnabled = false;
+    var eightDVolumeSlider = document.getElementById('eightDVolumeSlider');
+
+    enable8DButton.addEventListener('click', function() {
+      if (!is8DEnabled) {
+        enable8D();
+      }
+    });
+
+    disable8DButton.addEventListener('click', function() {
+      if (is8DEnabled) {
+        disable8D();
+      }
+    });
+
+    eightDVolumeSlider.addEventListener('input', function() {
+      if (is8DEnabled) {
+        var volumeLevel = parseFloat(eightDVolumeSlider.value);
+        gainNode.gain.value = volumeLevel / 50;
+      }
+    });
+
+    // Kode JavaScript sebelumnya
+
+function enable8D() {
+  if (!is8DEnabled) {
+    is8DEnabled = true;
+    enable8DButton.disabled = true;
+    disable8DButton.disabled = false;
+    eightDVolumeSlider.disabled = false;
+
+    // Set panning model to HRTF for 8D effect
+    pannerNode.panningModel = 'HRTF';
+    pannerNode.distanceModel = 'linear';
+    pannerNode.refDistance = 1;
+    pannerNode.maxDistance = 10000;
+    pannerNode.rolloffFactor = 1;
+    pannerNode.coneInnerAngle = 360;
+    pannerNode.coneOuterAngle = 360;
+    pannerNode.coneOuterGain = 0;
+    pannerNode.setPosition(1, 0, 0); // Ubah nilai posisi suara 8D
+
+    // Create stereo panner node for additional effects
+    var stereoPannerNode = audioContext.createStereoPanner();
+    stereoPannerNode.pan.value = 0;
+
+    // Create panner modulator oscillator
+    var pannerModulatorNode = audioContext.createOscillator();
+    pannerModulatorNode.type = 'sine';
+    pannerModulatorNode.frequency.value = 2; // Ubah frekuensi modulasi panning
+
+    // Create panner modulation gain node
+    var pannerModulationGainNode = audioContext.createGain();
+    pannerModulationGainNode.gain.value = 0.8; // Ubah amplitudo modulasi panning
+
+    // Create high-pass filter node for clarity
+    var highPassFilterNode = audioContext.createBiquadFilter();
+    highPassFilterNode.type = 'highpass';
+    highPassFilterNode.frequency.value = 55; // Ubah titik pemotongan frekuensi rendah
+
+    // Create low-pass filter node for enhanced bass
+    var lowPassFilterNode = audioContext.createBiquadFilter();
+    lowPassFilterNode.type = 'lowpass';
+    lowPassFilterNode.frequency.value = 5500; // Ubah titik pemotongan frekuensi tinggi
+
+    // Create dynamic compressor node for volume control
+    var compressorNode = audioContext.createDynamicsCompressor();
+    compressorNode.threshold.value = -20;
+    compressorNode.ratio.value = 4;
+
+    // Connect audio nodes
+    sourceNode.connect(highPassFilterNode);
+    highPassFilterNode.connect(lowPassFilterNode);
+    lowPassFilterNode.connect(stereoPannerNode);
+    stereoPannerNode.connect(pannerNode);
+    pannerNode.connect(compressorNode);
+    compressorNode.connect(audioContext.destination);
+    pannerModulatorNode.connect(pannerModulationGainNode);
+    pannerModulationGainNode.connect(stereoPannerNode.pan);
+    pannerModulatorNode.start();
+
+    // Function to visualize frequency data
+    function visualize() {
+      requestAnimationFrame(visualize);
+      analyserNode.getByteFrequencyData(dataArray);
+      // Process dataArray to create specific visualization effects
+
+      // Periodically modulate the pannerNode
+      var panValue = Math.sin(audioContext.currentTime * 0.2) * 0.5; // Ubah frekuensi dan amplitudo modulasi panning
+      stereoPannerNode.pan.value = panValue;
+    }
+
+    // Call visualize() function
+    visualize();
+  }
+}
+
+// Kode JavaScript selanjutnya
+
+    function disable8D() {
+      if (is8DEnabled) {
+        is8DEnabled = false;
+        enable8DButton.disabled = false;
+        disable8DButton.disabled = true;
+        eightDVolumeSlider.disabled = true;
+
+        // Set panning model to equal power for normal stereo effect
+        pannerNode.panningModel = 'equalpower';
+        pannerNode.setPosition(0, 0, 1);
+      }
+    }
+    var volumeSlider = document.getElementById('volumeSlider');
+var playButton = document.querySelector('.play-button');
+var pauseButton = document.querySelector('.pause-button');
+var musicButton = document.querySelector('.music-button');
+var changeSongButton = document.querySelector('.change-song-button');
+var enhanceSoundButton = document.querySelector('.enhance-sound-button');
+var audioPlayer = new Audio();
+var selectedFile = null;
+var currentTimeElement = document.getElementById('currentTime');
+var durationElement = document.getElementById('duration');
+var audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 15000 });
+var sourceNode = audioContext.createMediaElementSource(audioPlayer);
+var gainNode = audioContext.createGain();
+var pannerNode = audioContext.createPanner();
+var isEnhanced = false;
+var isPlaying = false;
+var bassSlider = document.getElementById('bassSlider');
+var bassGainNode = audioContext.createGain();
+var bassFilterNode = audioContext.createBiquadFilter(); 
+bassFilterNode.type = 'lowpass';
+bassFilterNode.frequency.value = 200;
+bassFilterNode.gain.value = 1;
+
+sourceNode.connect(bassGainNode);
+bassGainNode.connect(bassFilterNode);
+bassFilterNode.connect(gainNode);
+
+bassSlider.addEventListener('input', function() {
+  var bassLevel = parseFloat(bassSlider.value);
+  bassFilterNode.gain.value = bassLevel * 2
+});
+sourceNode.connect(gainNode);
+gainNode.connect(pannerNode);
+pannerNode.connect(audioContext.destination);
+
+playButton.addEventListener('click', function() {
+  if (!isPlaying) {
+    audioContext.resume().then(function() {
+      audioPlayer.play();
+      isPlaying = true;
+    });
+  }
+});
+
+pauseButton.addEventListener('click', function() {
+  if (isPlaying) {
+    audioPlayer.pause();
+    audioContext.suspend().then(function() {
+      isPlaying = false;
+    });
+  }
+});
+
+volumeSlider.addEventListener('input', function() {
+  var volumeLevel = parseFloat(volumeSlider.value);
+  gainNode.gain.value = volumeLevel / 50;
+});
+
+musicButton.addEventListener('click', function() {
+  var fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = 'audio/*';
+  fileInput.addEventListener('change', function(event) {
+    selectedFile = event.target.files[0];
+    var fileURL = URL.createObjectURL(selectedFile);
+    audioPlayer.src = fileURL;
+    audioPlayer.load();
+    audioPlayer.play();
+    updateDuration();
+  });
+  fileInput.click();
+});
+
+changeSongButton.addEventListener('click', function() {
+  if (selectedFile !== null) {
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'audio/*';
+    fileInput.addEventListener('change', function(event) {
+      selectedFile = event.target.files[0];
+      var fileURL = URL.createObjectURL(selectedFile);
+      audioPlayer.src = fileURL;
+      audioPlayer.load();
+      audioPlayer.play();
+      updateDuration();
+    });
+    fileInput.click();
+  }
+});
+
+enhanceSoundButton.addEventListener('click', function() {
+  if (isEnhanced) {
+    isEnhanced = false;
+    enhanceSoundButton.classList.remove('enhanced');
+pannerNode.panningModel = 'HRTF';
+pannerNode.setPosition(0.3, 0, -0.3);
+  } else {
+    isEnhanced = true;
+    enhanceSoundButton.classList.add('enhanced');
+    pannerNode.panningModel = 'HRTF';
+    pannerNode.setPosition(0.5, 0, 0);        
+  }
+});
+
+audioPlayer.addEventListener('timeupdate', function() {
+  var currentTime = formatTime(audioPlayer.currentTime);
+  currentTimeElement.textContent = currentTime;
+});
+
+audioPlayer.addEventListener('loadedmetadata', function() {
+  var duration = formatTime(audioPlayer.duration);
+  durationElement.textContent = duration;
+});
+
+function formatTime(time) {
+  var minutes = Math.floor(time / 60);
+  var seconds = Math.floor(time % 60);
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  return minutes + ':' + seconds;
+}
+
+function updateDuration() {
+  audioPlayer.addEventListener('loadedmetadata', function() {
+    var duration = formatTime(audioPlayer.duration);
+    durationElement.textContent = duration;
+  });
+}
+
+var analyserNode = audioContext.createAnalyser();
+var bufferLength = analyserNode.frequencyBinCount;
+var dataArray = new Uint8Array(bufferLength);
+
+sourceNode.connect(analyserNode);
+analyserNode.connect(audioContext.destination);
+
+function visualize() {
+  requestAnimationFrame(visualize);
+  analyserNode.getByteFrequencyData(dataArray);
+
+  // Calculate average frequency value
+  var sum = 0;
+  for (var i = 0; i < bufferLength; i++) {
+    sum += dataArray[i];
+  }
+  var average = sum / bufferLength;
+
+  // Adjust circle animation speed based on average frequency
+  var animationDuration = 2 - average / 255; // Adjust the divisor to control the animation speed
+  document.styleSheets[0].addRule('.card::before', 'animation-duration: ' + animationDuration + 's;');
+}
+visualize();
+  
+
+
+
+  
+    // Kode JavaScript sebelumnya
+
+     
+     document.querySelector('.change-wallpaper-button').addEventListener('click', function() {
+      document.getElementById('wallpaperInput').click();
+    });
+
+    document.getElementById('wallpaperInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          const backgroundImageUrl = `url('${reader.result}')`;
+          document.body.style.backgroundImage = backgroundImageUrl;
+          localStorage.setItem('backgroundImage', backgroundImageUrl);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const storedBackgroundImage = localStorage.getItem('backgroundImage');
+      if (storedBackgroundImage) {
+        document.body.style.backgroundImage = storedBackgroundImage;
+      }
+    });
+  const hideUiButton = document.querySelector('.hide-ui-button');
+  const audioControls = document.querySelector('.audio-controls');
+
+  hideUiButton.addEventListener('click', () => {
+    audioControls.classList.toggle('hidden-ui');
+  });
+  
+  //partikel latar belakang
+  
+  particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#2affea"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#ff4900"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.7,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#48686c",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3, // Mengurangi kecepatan partikel
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "attract": {
+                        "enable": true,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onmousemove": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 200,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+  </script>
+  </body> 
+  </html>
